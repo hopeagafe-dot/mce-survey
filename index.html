@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MCE Starlink Survey</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1a56db">
+<meta name="description" content="Starlink 서비스 품질 개선을 위한 익명 설문 (약 3~7분) · Anonymous survey to improve Starlink service · Anonymous na survey">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MCE Starlink Survey">
+<meta property="og:title" content="MCE Starlink 사용자 만족도 설문 · Survey">
+<meta property="og:description" content="Starlink 서비스 품질 개선을 위한 익명 설문 (약 3~7분) · Anonymous survey to improve Starlink service · Anonymous na survey">
+<meta property="og:image" content="https://hopeagafe-dot.github.io/mce-survey/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://hopeagafe-dot.github.io/mce-survey/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MCE Starlink 사용자 만족도 설문 · Survey">
+<meta name="twitter:description" content="Starlink 서비스 품질 개선을 위한 익명 설문 (약 3~7분) · Anonymous survey to improve Starlink service · Anonymous na survey">
+<meta name="twitter:image" content="https://hopeagafe-dot.github.io/mce-survey/og-image.png">
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#eef3fb;--card:#fff;--ink:#0f1b2d;--muted:#5b6b82;--line:#d9e2f1;--brand:#1a56db;--brand2:#0b3b8c;--soft:#e8f0ff;--err:#c0261b}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,#dfe9fb 0,#eef3fb 220px,#eef3fb 100%);color:var(--ink);line-height:1.55;-webkit-text-size-adjust:100%}
+.bar{position:fixed;top:0;left:0;right:0;height:5px;background:#cfdaf0;z-index:5}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),#38bdf8);transition:width .3s ease}
+.wrap{max-width:560px;margin:0 auto;padding:22px 16px calc(28px + env(safe-area-inset-bottom));min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--brand2);margin:6px 2px 14px;font-size:.95rem}
+.brand b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:16px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 10px 30px rgba(20,50,110,.10),0 2px 6px rgba(20,50,110,.06);padding:24px 20px 20px;animation:in .22s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.step{font-size:.82rem;font-weight:700;color:var(--brand);margin:0 0 10px}
+h1.q{font-size:1.28rem;line-height:1.45;margin:0 0 6px;font-weight:750;word-break:keep-all;overflow-wrap:anywhere}
+.help{color:var(--muted);font-size:.93rem;margin:0 0 14px;white-space:pre-line}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:15px 16px;min-height:56px;border:2px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font:inherit;font-size:1rem;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.opt .dot{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid #9db0d3;display:grid;place-items:center;background:#fff}
+.opt.chk .dot{border-radius:6px}
+.opt.on{border-color:var(--brand);background:var(--soft)}
+.opt.on .dot{border-color:var(--brand);background:var(--brand)}
+.opt.on .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
+.opt.chk.on .dot::after{width:10px;height:6px;border-radius:0;background:none;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.opt.lang{font-size:1.08rem;font-weight:650;min-height:62px}
+.scale{display:grid;gap:8px;margin-top:16px}
+.scale.r5{grid-template-columns:repeat(5,1fr)}
+.scale.n11{grid-template-columns:repeat(6,1fr)}
+.sc{min-height:56px;border:2px solid var(--line);border-radius:14px;background:#fff;font:inherit;font-size:1.15rem;font-weight:700;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sc.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.opt.na{margin-top:10px;justify-content:center;font-size:.95rem;min-height:48px;color:var(--muted)}
+textarea{width:100%;min-height:150px;margin-top:14px;padding:14px;border:2px solid var(--line);border-radius:14px;font:inherit;font-size:1rem;resize:vertical;color:var(--ink)}
+textarea:focus{outline:none;border-color:var(--brand)}
+.err{color:var(--err);font-weight:650;font-size:.92rem;margin-top:12px;min-height:1.2em;white-space:pre-line}
+.nav{display:flex;gap:12px;margin-top:18px}
+.btn{font:inherit;font-size:1.05rem;font-weight:750;border-radius:14px;min-height:54px;padding:0 20px;cursor:pointer;white-space:nowrap;border:2px solid transparent}
+.btn.pri{flex:1;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 6px 16px rgba(26,86,219,.28)}
+.btn.pri:disabled{opacity:.6}
+.btn.ghost{flex:none;min-width:96px;background:#fff;color:var(--brand2);border-color:var(--line)}
+.hero{background:linear-gradient(135deg,#1a56db 0,#0b3b8c 70%);color:#fff;border-radius:22px;padding:26px 22px;margin-bottom:14px;box-shadow:0 10px 30px rgba(20,50,110,.22)}
+.hero .em{font-size:2rem;line-height:1}
+.hero h1{margin:10px 0 0;font-size:1.35rem;line-height:1.4;font-weight:800;word-break:keep-all}
+.hero p{margin:0;opacity:.95;font-size:.95rem;white-space:pre-line}
+.intro h3{margin:18px 0 4px;font-size:1rem;font-weight:800;color:var(--brand2)}
+.intro h3:first-child{margin-top:0}
+.intro p{margin:0 0 6px}
+.intro ul{margin:4px 0 0;padding-left:20px}
+.intro li{margin:4px 0}
+.intro hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.thanks{text-align:center;padding:34px 18px}
+.thanks .big{font-size:3rem}
+.thanks h1{font-size:1.5rem;margin:8px 0 10px}
+.thanks p{color:var(--muted);white-space:pre-line}
+.foot{margin-top:auto;padding-top:18px;text-align:center;color:#7a8aa3;font-size:.82rem}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+noscript{display:block;padding:24px;text-align:center}
+</style>
+</head>
+<body>
+<div class="bar"><i id="barfill"></i></div>
+<div class="wrap" id="app">
+  <div class="brand"><b>📡</b><span>MCE Starlink</span></div>
+  <main id="screen" aria-live="polite"></main>
+  <div class="foot" id="foot"></div>
+</div>
+<noscript>이 설문은 JavaScript가 필요합니다. 브라우저 설정을 확인해 주세요.<br>This survey requires JavaScript. Please check your browser settings.<br>Kailangan ng JavaScript ang survey na ito. Tingnan ang inyong browser settings.</noscript>
+<script>window.__SURVEY__ = {"sections":[{"id":"S00","loc":null,"item":{"qid":"Q01","kind":"single_branch","required":true,"title":"Please select your language / 언어를 선택해 주세요 / Piliin ang iyong wika","help":"","choices":[{"code":"ko","label":"한국어 (Korean)","go":1},{"code":"en","label":"English (영어)","go":17},{"code":"fil","label":"Filipino (Tagalog)","go":33}]},"after":null,"welcome":null},{"id":"KO_ROLE","loc":"ko","item":{"qid":"Q02","kind":"single_branch","required":true,"title":"현재 이 선박의 MCE Starlink 관리자 역할을 맡고 있습니까?","help":"","choices":[{"code":"ADMIN_DECLARED","label":"예, 관리자입니다.","go":2},{"code":"REGULAR","label":"아니요, 일반 사용자입니다.","go":7}]},"after":null,"welcome":{"title":"👋 환영합니다 — 설문 안내","help":"안녕하세요, MCE Starlink 사용자 여러분! 👋\n바쁘신 중에도 시간을 내어 주셔서 진심으로 감사드립니다.\n\n━━━━━━━━━━━━━━\n🎯 이 설문의 목적\n이 설문은 여러분의 소중한 의견을 Starlink 서비스의 품질 개선에 적극 활용하기 위해 마련했습니다.\n\n🔒 [개인정보 안내]\n이 설문은 '관리자'인지 '일반 사용자'인지만 구분하며, 그 외 어떤 개인정보(이름·직급·로그인 ID·이메일 등)도 수집하지 않습니다. 부담 없이 솔직한 의견을 들려주세요.\n\n⏱️ 소요 시간\n• 약 3~7분\n\nℹ️ 알아 두실 점\n• 익명 응답이므로 중복 제출과 관리자 신분을 기술적으로 검증할 수는 없습니다. 한번만 제출 부탁드립니다.\n• 응답은 제품 개선과 집계 통계에 이용합니다. 따라서 자유서술에도 개인을 식별할 정보는 쓰지 말아 주세요."}},{"id":"KO_ADMIN_VERIFY","loc":"ko","item":{"qid":"A00","kind":"single_branch","required":true,"title":"관리자 전용 웹페이지(사용량·한도·정산 등)를 직접 사용해 본 적이 있습니까?","help":"","choices":[{"code":"YES","label":"예, 직접 사용해 보았습니다.","go":3},{"code":"NO","label":"아니요, 아직 사용 경험이 없습니다.","go":7}]},"after":null,"welcome":null},{"id":"KO_ADMIN_ONLY","loc":"ko","item":{"qid":"A01","kind":"rating_1_5_na","required":true,"title":"관리자 화면에서 선원별 사용량과 사용 한도를 편리하게 확인하고 조정할 수 있습니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_ADMIN_A02","loc":"ko","item":{"qid":"A02","kind":"rating_1_5_na","required":true,"title":"관리자 화면의 월별 정산 및 승선·하선자 사용 한도 관리 기능이 이해하기 쉽고 편리합니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_ADMIN_A03","loc":"ko","item":{"qid":"A03","kind":"rating_1_5_na","required":true,"title":"관리자 화면에 표시되는 사용자별 데이터 사용량 및 집계 결과를 신뢰할 수 있습니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_ADMIN_A04","loc":"ko","item":{"qid":"A04","kind":"paragraph","required":false,"title":"관리자 기능에서 가장 불편한 점이나 추가되었으면 하는 기능이 있다면 적어 주세요. (선택)","help":"","choices":[]},"after":null,"welcome":null},{"id":"KO_COMMON","loc":"ko","item":{"qid":"Q03","kind":"rating_1_5_na","required":true,"title":"전반적으로 MCE Starlink 서비스에 만족합니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_Q04","loc":"ko","item":{"qid":"Q04","kind":"rating_1_5_na","required":true,"title":"선내 Wi-Fi 접속 및 로그인 과정이 편리합니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_Q05","loc":"ko","item":{"qid":"Q05","kind":"rating_1_5_na","required":true,"title":"개인 데이터 사용량과 남은 사용 한도를 쉽게 확인할 수 있습니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_Q06","loc":"ko","item":{"qid":"Q06","kind":"rating_1_5_na","required":true,"title":"선내 Wi-Fi 신호 범위와 무선 연결 품질에 만족합니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_Q07","loc":"ko","item":{"qid":"Q07","kind":"rating_1_5_na","required":true,"title":"데이터 사용 한도와 요금·정산 방식이 합리적이라고 생각합니다.","help":"1 = 매우 부정, 3 = 보통, 5 = 매우 긍정","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"해당 없음 / 잘 모름","go":null}]},"after":null,"welcome":null},{"id":"KO_Q08","loc":"ko","item":{"qid":"Q08","kind":"nps_0_10","required":true,"title":"다른 선박에도 MCE Starlink를 추천할 의향이 얼마나 있습니까?","help":"0 = 전혀 추천하지 않음, 10 = 매우 추천함","choices":[{"code":"0","label":"0","go":null},{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"6","label":"6","go":null},{"code":"7","label":"7","go":null},{"code":"8","label":"8","go":null},{"code":"9","label":"9","go":null},{"code":"10","label":"10","go":null}]},"after":null,"welcome":null},{"id":"KO_Q09","loc":"ko","item":{"qid":"Q09","kind":"checkbox_max_2","required":true,"title":"가장 먼저 개선해야 할 부분을 최대 2개 선택해 주세요.","help":"","choices":[{"code":"LOGIN","label":"로그인 및 재접속","go":null},{"code":"USAGE_UI","label":"데이터 사용량 표시","go":null},{"code":"TRACKING","label":"데이터 집계 정확성","go":null},{"code":"WIFI","label":"선내 Wi-Fi 신호·연결","go":null},{"code":"BILLING","label":"데이터 한도 및 요금·정산","go":null},{"code":"WEB_ERROR","label":"MCE 웹페이지 오류","go":null},{"code":"SATELLITE","label":"위성 인터넷 속도·끊김","go":null},{"code":"SUPPORT","label":"고객 지원·문의","go":null},{"code":"NONE","label":"특별히 없음","go":null},{"code":"OTHER","label":"기타","go":null}],"max":2},"after":null,"welcome":null},{"id":"KO_Q10","loc":"ko","item":{"qid":"Q10","kind":"paragraph","required":false,"title":"MCE Starlink를 사용하면서 가장 만족스러웠던 점은 무엇입니까?","help":"","choices":[]},"after":null,"welcome":null},{"id":"KO_Q11","loc":"ko","item":{"qid":"Q11","kind":"paragraph","required":false,"title":"사용 중 불편했던 점이나 개선되었으면 하는 기능을 자유롭게 적어 주세요.","help":"","choices":[]},"after":null,"welcome":null},{"id":"KO_Q12","loc":"ko","item":{"qid":"Q12","kind":"single","required":true,"title":"작성한 의견을 개인정보를 제거한 익명 사용자 후기로 외부에 공개하는 것에 동의하십니까?","help":"","choices":[{"code":"AGREE","label":"동의","go":null},{"code":"DECLINE","label":"동의하지 않음","go":null},{"code":"NO_TEXT","label":"작성한 의견 없음","go":null}]},"after":"SUBMIT","welcome":null},{"id":"EN_ROLE","loc":"en","item":{"qid":"Q02","kind":"single_branch","required":true,"title":"Are you currently a designated MCE Starlink administrator on this vessel?","help":"","choices":[{"code":"ADMIN_DECLARED","label":"Yes, I am an administrator.","go":18},{"code":"REGULAR","label":"No, I am a regular user.","go":23}]},"after":null,"welcome":{"title":"👋 Welcome — About this survey","help":"Hello, and thank you very much for taking the time to share your views. 👋\n\n━━━━━━━━━━━━━━\n🎯 Purpose\nThis survey is carried out so that your valuable feedback can be actively used to improve the quality of the MCE Starlink service.\n\n🔒 [Privacy notice]\nThis survey only distinguishes whether you are an ‘administrator’ or a ‘general user’. We do not collect any other personal information (such as your name, rank, login ID or email). Please feel free to answer honestly.\n\n⏱️ Time needed\n• About 3–7 minutes\n\nℹ️ Good to know\n• This anonymous survey cannot technically verify identities or prevent duplicate submissions. Please submit only once.\n• Responses are used for product improvement and aggregated statistics. Therefore, please do not write identifying details, even in free-text answers."}},{"id":"EN_ADMIN_VERIFY","loc":"en","item":{"qid":"A00","kind":"single_branch","required":true,"title":"Have you personally used the administrator web page (usage, limits, billing, etc.)?","help":"","choices":[{"code":"YES","label":"Yes, I have personally used it.","go":19},{"code":"NO","label":"No, I have not used it yet.","go":23}]},"after":null,"welcome":null},{"id":"EN_ADMIN_ONLY","loc":"en","item":{"qid":"A01","kind":"rating_1_5_na","required":true,"title":"The admin page makes it easy to review and adjust individual users’ data usage and limits.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_ADMIN_A02","loc":"en","item":{"qid":"A02","kind":"rating_1_5_na","required":true,"title":"The admin page makes monthly billing and joining/leaving crew data allowance management clear and convenient.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_ADMIN_A03","loc":"en","item":{"qid":"A03","kind":"rating_1_5_na","required":true,"title":"I consider the per-user data usage and totals shown on the admin page reliable.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_ADMIN_A04","loc":"en","item":{"qid":"A04","kind":"paragraph","required":false,"title":"Please describe any problems or desired improvements to the admin features. (Optional)","help":"","choices":[]},"after":null,"welcome":null},{"id":"EN_COMMON","loc":"en","item":{"qid":"Q03","kind":"rating_1_5_na","required":true,"title":"Overall, I am satisfied with the MCE Starlink service.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_Q04","loc":"en","item":{"qid":"Q04","kind":"rating_1_5_na","required":true,"title":"Connecting to the onboard Wi-Fi and logging in is convenient.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_Q05","loc":"en","item":{"qid":"Q05","kind":"rating_1_5_na","required":true,"title":"I can easily check my data usage and remaining data allowance.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_Q06","loc":"en","item":{"qid":"Q06","kind":"rating_1_5_na","required":true,"title":"I am satisfied with the onboard Wi-Fi signal coverage and wireless connection quality.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_Q07","loc":"en","item":{"qid":"Q07","kind":"rating_1_5_na","required":true,"title":"I consider the data allowance and charging arrangements reasonable.","help":"1 = Very negative, 3 = Neutral, 5 = Very positive","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Not applicable / Not sure","go":null}]},"after":null,"welcome":null},{"id":"EN_Q08","loc":"en","item":{"qid":"Q08","kind":"nps_0_10","required":true,"title":"How likely are you to recommend MCE Starlink to another vessel?","help":"0 = Not at all likely, 10 = Extremely likely","choices":[{"code":"0","label":"0","go":null},{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"6","label":"6","go":null},{"code":"7","label":"7","go":null},{"code":"8","label":"8","go":null},{"code":"9","label":"9","go":null},{"code":"10","label":"10","go":null}]},"after":null,"welcome":null},{"id":"EN_Q09","loc":"en","item":{"qid":"Q09","kind":"checkbox_max_2","required":true,"title":"Select up to two areas that should be improved first.","help":"","choices":[{"code":"LOGIN","label":"Login and reconnection","go":null},{"code":"USAGE_UI","label":"Data usage display","go":null},{"code":"TRACKING","label":"Accuracy of usage tracking","go":null},{"code":"WIFI","label":"Onboard Wi-Fi signal and connection","go":null},{"code":"BILLING","label":"Data allowance and billing","go":null},{"code":"WEB_ERROR","label":"MCE website errors","go":null},{"code":"SATELLITE","label":"Satellite internet speed and outages","go":null},{"code":"SUPPORT","label":"Customer support","go":null},{"code":"NONE","label":"Nothing in particular","go":null},{"code":"OTHER","label":"Other","go":null}],"max":2},"after":null,"welcome":null},{"id":"EN_Q10","loc":"en","item":{"qid":"Q10","kind":"paragraph","required":false,"title":"What do you like most about using MCE Starlink?","help":"","choices":[]},"after":null,"welcome":null},{"id":"EN_Q11","loc":"en","item":{"qid":"Q11","kind":"paragraph","required":false,"title":"Please describe any difficulties you experienced or features you would like improved.","help":"","choices":[]},"after":null,"welcome":null},{"id":"EN_Q12","loc":"en","item":{"qid":"Q12","kind":"single","required":true,"title":"Do you agree to your written comments being shared publicly as anonymous user feedback after removing identifying details?","help":"","choices":[{"code":"AGREE","label":"Agree","go":null},{"code":"DECLINE","label":"Do not agree","go":null},{"code":"NO_TEXT","label":"No written comments","go":null}]},"after":"SUBMIT","welcome":null},{"id":"FIL_ROLE","loc":"fil","item":{"qid":"Q02","kind":"single_branch","required":true,"title":"Ikaw ba ay kasalukuyang itinalagang MCE Starlink administrator sa barkong ito?","help":"","choices":[{"code":"ADMIN_DECLARED","label":"Oo, administrator ako.","go":34},{"code":"REGULAR","label":"Hindi, karaniwang gumagamit ako.","go":39}]},"after":null,"welcome":{"title":"👋 Maligayang pagdating — Tungkol sa survey","help":"Kumusta po, at maraming salamat sa inyong oras sa pagbabahagi ng inyong opinyon. 👋\n\n━━━━━━━━━━━━━━\n🎯 Layunin\nIsinasagawa ang survey na ito upang aktibong magamit ang inyong mahahalagang puna sa pagpapabuti ng kalidad ng serbisyo ng MCE Starlink.\n\n🔒 [Paalala sa privacy]\nAng tanging pinag-iiba ng survey na ito ay kung kayo ay ‘administrator’ o ‘karaniwang gumagamit’. Wala kaming kinokolektang anumang iba pang personal na impormasyon (tulad ng pangalan, ranggo, login ID o email). Huwag pong mahiyang sumagot nang tapat.\n\n⏱️ Tagal\n• Mga 3–7 minuto\n\nℹ️ Mahalagang malaman\n• Hindi kayang patunayan ng anonymous survey na ito ang pagkakakilanlan o pigilan ang paulit-ulit na pagsagot. Mangyaring isang beses lamang sumagot.\n• Gagamitin ang mga sagot para sa pagpapabuti ng serbisyo at pinagsama-samang estadistika. Kaya huwag po magsulat ng impormasyong makapagpapakilala sa inyo, kahit sa mga sagot na nakasulat."}},{"id":"FIL_ADMIN_VERIFY","loc":"fil","item":{"qid":"A00","kind":"single_branch","required":true,"title":"Nagamit mo na ba mismo ang admin web page (data usage, limit, pagsingil, at iba pa)?","help":"","choices":[{"code":"YES","label":"Oo, nagamit ko na ito mismo.","go":35},{"code":"NO","label":"Hindi, hindi ko pa ito nagagamit.","go":39}]},"after":null,"welcome":null},{"id":"FIL_ADMIN_ONLY","loc":"fil","item":{"qid":"A01","kind":"rating_1_5_na","required":true,"title":"Madaling tingnan at baguhin ang data usage at limit ng bawat gumagamit sa admin page.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_ADMIN_A02","loc":"fil","item":{"qid":"A02","kind":"rating_1_5_na","required":true,"title":"Malinaw at madaling gamitin ang mga admin feature para sa buwanang pagsingil at data allowance ng sumasakay o bumababang crew.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_ADMIN_A03","loc":"fil","item":{"qid":"A03","kind":"rating_1_5_na","required":true,"title":"Para sa akin, mapagkakatiwalaan ang data usage ng bawat gumagamit at ang mga kabuuang bilang sa admin page.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_ADMIN_A04","loc":"fil","item":{"qid":"A04","kind":"paragraph","required":false,"title":"Ilarawan ang anumang problema o gustong idagdag o pagbutihin sa admin features. (Opsyonal)","help":"","choices":[]},"after":null,"welcome":null},{"id":"FIL_COMMON","loc":"fil","item":{"qid":"Q03","kind":"rating_1_5_na","required":true,"title":"Sa kabuuan, nasisiyahan ako sa serbisyo ng MCE Starlink.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_Q04","loc":"fil","item":{"qid":"Q04","kind":"rating_1_5_na","required":true,"title":"Madali ang pagkonekta sa Wi-Fi ng barko at ang pag-log in.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_Q05","loc":"fil","item":{"qid":"Q05","kind":"rating_1_5_na","required":true,"title":"Madali kong makita ang nagamit kong data at ang natitira kong data allowance.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_Q06","loc":"fil","item":{"qid":"Q06","kind":"rating_1_5_na","required":true,"title":"Nasisiyahan ako sa saklaw ng Wi-Fi signal at kalidad ng wireless connection sa barko.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_Q07","loc":"fil","item":{"qid":"Q07","kind":"rating_1_5_na","required":true,"title":"Para sa akin, makatuwiran ang data allowance at sistema ng pagsingil.","help":"1 = Napakanegatibo, 3 = Katamtaman, 5 = Napakapositibo","choices":[{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"NA","label":"Hindi naaangkop / Hindi sigurado","go":null}]},"after":null,"welcome":null},{"id":"FIL_Q08","loc":"fil","item":{"qid":"Q08","kind":"nps_0_10","required":true,"title":"Gaano kalamang na irekomenda mo ang MCE Starlink sa ibang barko?","help":"0 = Hindi talaga, 10 = Tiyak na tiyak","choices":[{"code":"0","label":"0","go":null},{"code":"1","label":"1","go":null},{"code":"2","label":"2","go":null},{"code":"3","label":"3","go":null},{"code":"4","label":"4","go":null},{"code":"5","label":"5","go":null},{"code":"6","label":"6","go":null},{"code":"7","label":"7","go":null},{"code":"8","label":"8","go":null},{"code":"9","label":"9","go":null},{"code":"10","label":"10","go":null}]},"after":null,"welcome":null},{"id":"FIL_Q09","loc":"fil","item":{"qid":"Q09","kind":"checkbox_max_2","required":true,"title":"Pumili ng hanggang dalawang bagay na dapat unahing pagbutihin.","help":"","choices":[{"code":"LOGIN","label":"Pag-log in at muling pagkonekta","go":null},{"code":"USAGE_UI","label":"Pagpapakita ng data usage","go":null},{"code":"TRACKING","label":"Katumpakan ng pagsukat ng data usage","go":null},{"code":"WIFI","label":"Wi-Fi signal at koneksiyon sa barko","go":null},{"code":"BILLING","label":"Data allowance at pagsingil","go":null},{"code":"WEB_ERROR","label":"Mga error sa MCE website","go":null},{"code":"SATELLITE","label":"Bilis at pagkawala ng satellite internet","go":null},{"code":"SUPPORT","label":"Suporta sa mga gumagamit","go":null},{"code":"NONE","label":"Wala naman","go":null},{"code":"OTHER","label":"Iba pa","go":null}],"max":2},"after":null,"welcome":null},{"id":"FIL_Q10","loc":"fil","item":{"qid":"Q10","kind":"paragraph","required":false,"title":"Ano ang pinakanagustuhan mo sa paggamit ng MCE Starlink?","help":"","choices":[]},"after":null,"welcome":null},{"id":"FIL_Q11","loc":"fil","item":{"qid":"Q11","kind":"paragraph","required":false,"title":"Ilarawan ang anumang abalang naranasan mo o mga feature na gusto mong mapabuti.","help":"","choices":[]},"after":null,"welcome":null},{"id":"FIL_Q12","loc":"fil","item":{"qid":"Q12","kind":"single","required":true,"title":"Pumapayag ka bang ibahagi sa publiko ang iyong mga komento bilang anonymous na feedback matapos alisin ang impormasyong maaaring magpakilala sa iyo?","help":"","choices":[{"code":"AGREE","label":"Pumapayag","go":null},{"code":"DECLINE","label":"Hindi pumapayag","go":null},{"code":"NO_TEXT","label":"Walang isinulat na komento","go":null}]},"after":"SUBMIT","welcome":null}],"ui":{"ko":{"next":"다음","back":"이전","start":"시작하기","submit":"제출","sending":"전송 중…","optional":"(선택)","thanks_title":"감사합니다 🙏","thanks_body":"응답이 안전하게 제출되었습니다.\n소중한 의견은 Starlink 서비스 품질 개선에 활용하겠습니다.\n이 창은 닫으셔도 됩니다.","err_required":"필수 질문입니다. 답변을 선택해 주세요.","err_max2":"최대 2개까지 선택할 수 있습니다.","err_send":"전송하지 못했습니다. 인터넷 연결을 확인하고 다시 시도해 주세요. 입력하신 내용은 그대로 유지됩니다.","err_link":"이 링크로는 설문에 참여할 수 없습니다.\n선박 단체 카카오톡방에 올라온 링크로 다시 접속해 주세요.","retry":"다시 시도","footer":"응답은 익명으로 처리됩니다.","noscript":"이 설문은 JavaScript가 필요합니다. 브라우저 설정을 확인해 주세요."},"en":{"next":"Next","back":"Back","start":"Start","submit":"Submit","sending":"Sending…","optional":"(optional)","thanks_title":"Thank you 🙏","thanks_body":"Your response has been submitted.\nYour feedback will be used to improve the quality of the Starlink service.\nYou may now close this window.","err_required":"This question is required. Please choose an answer.","err_max2":"You can select up to two options.","err_send":"Could not send your response. Please check your internet connection and try again. Your answers are kept.","err_link":"This link cannot be used for the survey.\nPlease open the link posted in your vessel’s KakaoTalk group.","retry":"Try again","footer":"Responses are anonymous.","noscript":"This survey requires JavaScript. Please check your browser settings."},"fil":{"next":"Susunod","back":"Bumalik","start":"Magsimula","submit":"Isumite","sending":"Ipinapadala…","optional":"(opsyonal)","thanks_title":"Maraming salamat 🙏","thanks_body":"Matagumpay na naisumite ang inyong sagot.\nGagamitin namin ang inyong puna upang mapabuti ang kalidad ng serbisyo ng Starlink.\nMaaari na ninyong isara ang pahinang ito.","err_required":"Kailangang sagutan ang tanong na ito. Pumili ng sagot.","err_max2":"Hanggang dalawa lamang ang maaaring piliin.","err_send":"Hindi naipadala ang inyong sagot. Tingnan ang inyong internet at subukang muli. Mananatili ang inyong mga sagot.","err_link":"Hindi magagamit ang link na ito para sa survey.\nBuksan ang link na ipinost sa KakaoTalk group ng inyong barko.","retry":"Subukang muli","footer":"Anonymous ang mga sagot.","noscript":"Kailangan ng JavaScript ang survey na ito. Tingnan ang inyong browser settings."}},"welcomeGlobal":"🌐 먼저 사용하실 언어를 선택해 주세요.\n🌐 Please choose your language first.\n🌐 Pumili muna ng wika."};</script>
+<script src="config.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.__SURVEY__, S = D.sections, UI = D.ui;
+  var idxOf = {}; S.forEach(function (s, i) { idxOf[s.id] = i; });
+  var params = new URLSearchParams(location.search);
+  var VESSEL = (params.get('v') || '').trim(), KEY = (params.get('k') || '').trim();
+  var ENDPOINT = window.MCE_ENDPOINT || '';
+  var t0 = Date.now(), answers = {}, stack = [], sendId = null, busy = false, blocked = false;
+  var screen = document.getElementById('screen'), fill = document.getElementById('barfill'), foot = document.getElementById('foot');
+
+  function h(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === 'text') e.textContent = attrs[k];
+      else if (k === 'class') e.className = attrs[k];
+      else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), attrs[k]);
+      else e.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (c) { if (c) e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return e;
+  }
+  function loc() { return answers.Q01 || null; }
+  function cur() { return stack[stack.length - 1]; }
+  function push(si) { stack.push({ si: si, ph: S[si].welcome ? 'w' : 'q' }); }
+  function pathSections() { return stack.filter(function (e) { return e.ph === 'q'; }).map(function (e) { return e.si; }); }
+  function totalQ() {
+    if (answers.Q02 === 'ADMIN_DECLARED') return answers.A00 === 'YES' ? 17 : 13;
+    return 12;
+  }
+  function setBar() {
+    if (!loc()) { fill.style.width = '0'; return; }
+    var n = pathSections().length - 1; if (n < 0) n = 0;
+    fill.style.width = Math.min(100, Math.round(100 * n / totalQ())) + '%';
+  }
+  function renderIntro(text) {
+    var box = h('div', { class: 'intro' }), list = null;
+    text.split('\n').forEach(function (line) {
+      var t = line.trim();
+      if (!t) { list = null; return; }
+      if (/^[━─-]{3,}$/.test(t)) { list = null; box.appendChild(h('hr')); return; }
+      if (t.charAt(0) === '•') {
+        if (!list) { list = h('ul'); box.appendChild(list); }
+        list.appendChild(h('li', { text: t.replace(/^•\s*/, '') })); return;
+      }
+      list = null;
+      if (/^(🎯|🔒|⏱|ℹ)/.test(t)) box.appendChild(h('h3', { text: t })); else box.appendChild(h('p', { text: t }));
+    });
+    return box;
+  }
+  function showBlocked() {
+    blocked = true; fill.style.width = '0';
+    var msg = ['ko', 'en', 'fil'].map(function (x) { return UI[x].err_link; }).join('\n\n');
+    screen.replaceChildren(h('div', { class: 'card' }, [h('h1', { class: 'q', text: '⚠️' }), h('p', { class: 'help', text: msg })]));
+  }
+  function renderWelcome(sec) {
+    var u = UI[sec.loc];
+    var hero = h('div', { class: 'hero' }, [h('div', { class: 'em', text: '👋' }), h('h1', { text: sec.welcome.title.replace(/^👋\s*/, '') })]);
+    var card = h('div', { class: 'card' }, [renderIntro(sec.welcome.help),
+      h('div', { class: 'nav' }, [
+        h('button', { class: 'btn ghost', type: 'button', text: u.back, onclick: back }),
+        h('button', { class: 'btn pri', type: 'button', text: u.start, onclick: function () { stack.push({ si: cur().si, ph: 'q' }); render(); } })])]);
+    screen.replaceChildren(hero, card);
+  }
+  function renderQuestion(sec) {
+    var it = sec.item, l = sec.loc, u = l ? UI[l] : null, qid = it.qid;
+    var card = h('div', { class: 'card' });
+    if (l) card.appendChild(h('p', { class: 'step', text: pathSections().length + ' / ' + totalQ() }));
+    card.appendChild(h('h1', { class: 'q', text: it.title }));
+    if (it.help) card.appendChild(h('p', { class: 'help', text: it.help }));
+    if (!it.required && u) card.appendChild(h('p', { class: 'help', text: u.optional }));
+    var errBox = h('div', { class: 'err', role: 'alert' });
+    var body = h('div');
+    function mark() {
+      Array.prototype.forEach.call(body.querySelectorAll('[data-code]'), function (b) {
+        var v = answers[qid], c = b.getAttribute('data-code'), on = Array.isArray(v) ? v.indexOf(c) >= 0 : v === c;
+        b.classList.toggle('on', on); b.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+    }
+    function pick(code) {
+      errBox.textContent = '';
+      if (it.kind === 'checkbox_max_2') {
+        var a = (answers[qid] || []).slice(), i = a.indexOf(code);
+        if (i >= 0) a.splice(i, 1);
+        else if (code === 'NONE') a = ['NONE'];
+        else { a = a.filter(function (x) { return x !== 'NONE'; }); if (a.length >= it.max) { errBox.textContent = u.err_max2; return; } a.push(code); }
+        answers[qid] = a;
+      } else { answers[qid] = code; }
+      mark();
+      if (qid === 'Q01') setTimeout(next, 220);
+    }
+    function optBtn(c, cls) {
+      return h('button', { type: 'button', class: cls, role: it.kind === 'checkbox_max_2' ? 'checkbox' : 'radio', 'data-code': c.code, onclick: function () { pick(c.code); } },
+        cls.indexOf('sc') === 0 ? [c.label] : [h('span', { class: 'dot' }), h('span', { text: c.label })]);
+    }
+    if (it.kind === 'paragraph') {
+      var ta = h('textarea', { maxlength: '2000', rows: '6', 'aria-label': it.title });
+      ta.value = answers[qid] || '';
+      ta.addEventListener('input', function () { answers[qid] = ta.value; });
+      body.appendChild(ta);
+    } else if (it.kind === 'rating_1_5_na') {
+      var row = h('div', { class: 'scale r5' }), na = null;
+      it.choices.forEach(function (c) { if (c.code === 'NA') na = c; else row.appendChild(optBtn(c, 'sc')); });
+      body.appendChild(row); if (na) body.appendChild(optBtn(na, 'opt na'));
+    } else if (it.kind === 'nps_0_10') {
+      var g = h('div', { class: 'scale n11' }); it.choices.forEach(function (c) { g.appendChild(optBtn(c, 'sc')); }); body.appendChild(g);
+    } else {
+      var box = h('div', { class: 'opts' });
+      it.choices.forEach(function (c) { box.appendChild(optBtn(c, 'opt' + (it.kind === 'checkbox_max_2' ? ' chk' : '') + (qid === 'Q01' ? ' lang' : ''))); });
+      body.appendChild(box);
+    }
+    card.appendChild(body); card.appendChild(errBox);
+    if (qid !== 'Q01') {
+      var last = sec.after === 'SUBMIT';
+      card.appendChild(h('div', { class: 'nav' }, [
+        h('button', { class: 'btn ghost', type: 'button', text: u.back, onclick: back }),
+        h('button', { class: 'btn pri', type: 'button', id: 'nextbtn', text: last ? u.submit : u.next, onclick: next })]));
+    }
+    if (it.kind !== 'paragraph') mark();
+    if (sec.after === 'SUBMIT') card.appendChild(h('input', { class: 'hp', type: 'text', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true', id: 'hp', name: 'website' }));
+    if (!l) screen.replaceChildren(h('div', { class: 'hero' }, [h('p', { text: D.welcomeGlobal })]), card);
+    else screen.replaceChildren(card);
+  }
+  function render() {
+    if (blocked) return;
+    var e = cur(), sec = S[e.si];
+    foot.textContent = loc() ? UI[loc()].footer : '';
+    if (e.ph === 'w') renderWelcome(sec); else renderQuestion(sec);
+    setBar(); window.scrollTo(0, 0);
+  }
+  function back() { if (busy || stack.length < 2) return; stack.pop(); render(); }
+  function target(sec) {
+    var it = sec.item, v = answers[it.qid];
+    var ch = it.choices ? it.choices.filter(function (c) { return c.code === v; })[0] : null;
+    if (ch && ch.go !== null && ch.go !== undefined) return ch.go;
+    return sec.after === 'SUBMIT' ? -1 : idxOf[sec.id] + 1;
+  }
+  function next() {
+    if (busy) return;
+    var e = cur(), sec = S[e.si], it = sec.item, v = answers[it.qid];
+    var empty = v === undefined || v === null || v === '' || (Array.isArray(v) && !v.length);
+    if (it.required && empty) {
+      var eb = screen.querySelector('.err');
+      if (eb) eb.textContent = loc() ? UI[loc()].err_required : ['ko', 'en', 'fil'].map(function (x) { return UI[x].err_required; }).join('\n');
+      return;
+    }
+    var t = target(sec);
+    if (t === -1) { submit(); return; }
+    push(t); render();
+  }
+  function randomId() {
+    var a = new Uint8Array(16); (window.crypto || window.msCrypto).getRandomValues(a);
+    return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+  function finalAnswers() {
+    var out = {};
+    pathSections().forEach(function (si) {
+      var it = S[si].item, v = answers[it.qid];
+      if (v === undefined || v === null) return;
+      if (it.kind === 'paragraph') { v = String(v).trim(); if (!v) return; }
+      out[it.qid] = v;
+    });
+    return out;
+  }
+  function submit() {
+    var u = UI[loc()], btn = document.getElementById('nextbtn'), eb = screen.querySelector('.err'), hp = document.getElementById('hp');
+    busy = true; if (btn) { btn.disabled = true; btn.textContent = u.sending; } if (eb) eb.textContent = '';
+    sendId = sendId || randomId();
+    var payload = { v: VESSEL, k: KEY, id: sendId, elapsed: Math.round((Date.now() - t0) / 1000), hp: hp ? hp.value : '', answers: finalAnswers() };
+    var ctl = ('AbortController' in window) ? new AbortController() : null, timer = ctl ? setTimeout(function () { ctl.abort(); }, 25000) : null;
+    function fail(msg) { busy = false; if (btn) { btn.disabled = false; btn.textContent = u.retry; } if (eb) eb.textContent = msg; }
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload), signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (timer) clearTimeout(timer);
+        if (j && j.ok) return done();
+        fail(j && j.error === 'LINK' ? u.err_link : u.err_send);
+      })
+      .catch(function () { if (timer) clearTimeout(timer); fail(u.err_send); });
+  }
+  function done() {
+    busy = false; fill.style.width = '100%';
+    var u = UI[loc()];
+    screen.replaceChildren(h('div', { class: 'card thanks' }, [h('div', { class: 'big', text: '✅' }), h('h1', { text: u.thanks_title }), h('p', { text: u.thanks_body })]));
+    window.scrollTo(0, 0);
+  }
+  if (!VESSEL || !KEY || KEY.length < 16 || !ENDPOINT) { showBlocked(); return; }
+  push(0); render();
+  fetch(ENDPOINT + (ENDPOINT.indexOf('?') >= 0 ? '&' : '?') + 'a=check&v=' + encodeURIComponent(VESSEL) + '&k=' + encodeURIComponent(KEY))
+    .then(function (r) { return r.json(); })
+    .then(function (j) { if (j && j.ok === false) showBlocked(); })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>
